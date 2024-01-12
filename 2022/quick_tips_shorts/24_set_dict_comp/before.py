@@ -1,8 +1,5 @@
 def main():
-    # create a set of numbers
-    my_set: set[int] = set()
-    for i in range(10):
-        my_set.add(i * i)
+    my_set: set[int] = {i * i for i in range(10)}
     print(my_set)
 
     # create a dictionary of numbers

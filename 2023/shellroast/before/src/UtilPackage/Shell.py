@@ -15,36 +15,28 @@ class Command:
 class Shell:
 	""" A basic shell out of the box. """
 	
-	def shellInput(self, Tool: str = None) -> Command | bool: 
+	def shellInput(self, Tool: str = None) -> Command | bool:
 		""" Gets User input then returns a parsed command. """
 		if Tool:
 			re_val = self.parseCmd(input(f"  {f.YELLOW}[*][{Tool}] {f.CYAN}-> {f.WHITE}"))
-			if re_val:
-				return re_val
-			else:
-				return False
 		else:
 			re_val = self.parseCmd(input(f"  {f.YELLOW}[*] {f.CYAN}-> {f.WHITE}"))
-			if re_val:
-				return re_val
-			else:
-				return False
+		return re_val if re_val else False
 	
-	def parseCmd(self, cmd: str) -> Command | bool: 
+	def parseCmd(self, cmd: str) -> Command | bool:
 		""" Parses a command and returns the command and its args. """
-		if len(cmd) > 0:
-			if len(cmd.split(' ')) > 1:
-				return Command(
-					cmd.split(' ')[0].strip().upper(), 
-					[i.strip() for i in cmd.split(' ')[1:]]
-				)
-			else:
-				return Command(
-					cmd.split(' ')[0].strip().upper(),
-					[]
-				)
-		else:
+		if not cmd:
 			return False
+
+		else:
+			return (
+				Command(
+					cmd.split(' ')[0].strip().upper(),
+					[i.strip() for i in cmd.split(' ')[1:]],
+				)
+				if len(cmd.split(' ')) > 1
+				else Command(cmd.split(' ')[0].strip().upper(), [])
+			)
 
 
 

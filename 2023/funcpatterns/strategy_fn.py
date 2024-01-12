@@ -16,16 +16,15 @@ def quick_sort(data: list[int]) -> list[int]:
     data = data.copy()
     if len(data) <= 1:
         return data
-    else:
-        pivot = data.pop()
-        greater: list[int] = []
-        lesser: list[int] = []
-        for item in data:
-            if item > pivot:
-                greater.append(item)
-            else:
-                lesser.append(item)
-        return quick_sort(lesser) + [pivot] + quick_sort(greater)
+    pivot = data.pop()
+    greater: list[int] = []
+    lesser: list[int] = []
+    for item in data:
+        if item > pivot:
+            greater.append(item)
+        else:
+            lesser.append(item)
+    return quick_sort(lesser) + [pivot] + quick_sort(greater)
 
 
 SortFn = Callable[[list[int]], list[int]]

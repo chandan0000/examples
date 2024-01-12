@@ -24,16 +24,15 @@ class QuickSortStrategy(SortStrategy):
         data = data.copy()
         if len(data) <= 1:
             return data
-        else:
-            pivot = data.pop()
-            greater: list[int] = []
-            lesser: list[int] = []
-            for item in data:
-                if item > pivot:
-                    greater.append(item)
-                else:
-                    lesser.append(item)
-            return self.sort(lesser) + [pivot] + self.sort(greater)
+        pivot = data.pop()
+        greater: list[int] = []
+        lesser: list[int] = []
+        for item in data:
+            if item > pivot:
+                greater.append(item)
+            else:
+                lesser.append(item)
+        return self.sort(lesser) + [pivot] + self.sort(greater)
 
 
 class Context:

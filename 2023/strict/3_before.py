@@ -1,8 +1,5 @@
 def count(words: list[str]) -> list[int]:
-    result = []
-    for word in words:
-        result.append(len(word))
-    return result
+    return [len(word) for word in words]
 
 
 def main() -> None:

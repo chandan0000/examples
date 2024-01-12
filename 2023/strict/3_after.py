@@ -2,10 +2,7 @@ from typing import Iterable, Sized
 
 
 def count(words: Iterable[Sized]) -> list[int]:
-    result = []
-    for word in words:
-        result.append(len(word))
-    return result
+    return [len(word) for word in words]
 
 
 def main() -> None:

@@ -34,8 +34,7 @@ def to_uri(s: str | int | bytes) -> URI | bool:
 
 def main() -> None:
     uri_data = input("Enter data to encode: ")
-    uri = to_uri(uri_data)
-    if uri:
+    if uri := to_uri(uri_data):
         print(uri)
     else:
         print("Invalid data")

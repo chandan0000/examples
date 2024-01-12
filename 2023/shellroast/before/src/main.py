@@ -169,8 +169,6 @@ class Interface:
 			self.command = self.shell.shellInput()
 			if self.command:
 				self.execute(self.command)
-			else:
-				pass
 
 def main():
 	Interface_ = Interface()
